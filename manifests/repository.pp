@@ -22,8 +22,13 @@ class go::repository {
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
-        content => 'deb http://download.go.cd/gocd-deb/ /',
+        content => 'deb http://dl.bintray.com/gocd/gocd-deb/ /',
       }
+
+      apt::key { 'gocd':
+        key_source => 'https://bintray.com/user/downloadSubjectPublicKey?username=gocd'
+      }
+
       exec {'go_run_apt_get_update':
         command     => 'apt-get update',
         path        => ['/bin', '/usr/bin', '/sbin', '/usr/sbin'],
