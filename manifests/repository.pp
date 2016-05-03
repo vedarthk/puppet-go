@@ -26,6 +26,7 @@ class go::repository {
       }
 
       apt::key { 'gocd':
+        key        => '173454C7',
         key_source => 'https://bintray.com/user/downloadSubjectPublicKey?username=gocd'
       }
 
